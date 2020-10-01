@@ -32,6 +32,7 @@ const Form = ()=>{
 
        const sendData = async (userInput)=>{
           const res = await db.collection('TravelDestination').doc('Place2').set(userInput);  
+          
      }
 
 

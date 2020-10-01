@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig";
-
+import Board from "./Board/index.js";
 
 const Boards = () => {
     const[boardData, setBoardData] = useState([]);
@@ -18,7 +18,7 @@ const Boards = () => {
     },[])
 
     return (
-        boardData.map(data => <Board />)
+        boardData.map(data => <Board {...data}/>)
     )
 
 }
