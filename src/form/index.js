@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
+// var ref = db.ref("server/saving-data/fireblog");
 
 
 
@@ -22,18 +23,16 @@ const Form = ()=>{
       const handleSubmit = (e) => {
         e.preventDefault();
         alert(`
-        First Name : ${userInput.name}
-        Last Name : ${userInput.date}
-        Age : ${userInput.visited}
-        `);
+        name : ${userInput.name}
+        date: ${userInput.date}
+        visited : ${userInput.visited}
+        `)
+        sendData(userInput);
       };
 
-      const sendData = async ()=>{
-        const boardRes = await db.collection('TravelDestination').post()
-        const boardData = boardRes.docs.map(user => user.data())
-        setBoardData(boardData)
-        console.log(boardData)
-    }
+       const sendData = async (userInput)=>{
+          const res = await db.collection('TravelDestination').doc('Place2').set(userInput);  
+     }
 
 
     return(
@@ -51,14 +50,14 @@ const Form = ()=>{
             type="text"
             onChange={handleInputChange}
             value={userInput.date}
-            onChange={(e) => handleInputChange(e, "Date")}
+            onChange={(e) => handleInputChange(e, "date")}
             placeholder="Date"
             />
             <input
             type="checkbox"
             onChange={handleInputChange}
             value={userInput.visited}
-            onChange={(e) => handleInputChange(e, "visited")}
+            onChecked={(e) => handleInputChange(e, "visited")}
             />
             <button type="submit">Submit</button>
         </form>
