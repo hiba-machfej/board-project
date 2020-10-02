@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import db from "../firebaseConfig";
-import Board from "./Board/index.js";
-
+import db from "../firebaseConfig.js";
+import Board from "../Board/index.js"
+///this will render the data from the firebase to the website
 const Boards = () => {
     const[boardData, setBoardData] = useState([]);
 
@@ -23,4 +23,4 @@ const Boards = () => {
 
 }
 
-export default Boards
+export default Boards;

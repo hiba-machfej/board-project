@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
-// var ref = db.ref("server/saving-data/fireblog");
+
 
 
 
