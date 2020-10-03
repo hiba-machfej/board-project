@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
 import Board from "../Board/index.js"
 ///this will render the data from the firebase to the website
-const Boards = () => {
+
+/// onSnapShot to rener the data
+const Boards = (props) => {
     const[boardData, setBoardData] = useState([]);
 
 
@@ -18,7 +20,7 @@ const Boards = () => {
     },[])
 
     return (
-        boardData.map(data => <Board {...data}/>)
+        boardData.map(data => <Board {...data} onUserSelect = {props.onUserSelect}/>)
     )
 
 }

@@ -4,12 +4,12 @@ import db from "../firebaseConfig.js";
 
 
 
-const Form = ()=>{
+const Form = (props)=>{
 
     const [userInput, setUserInput] = React.useState({
-        name: "",
-        date: "",
-        visited: false
+        name: props.onUserSelect.name,
+        date: props.onUserSelect.date,
+        visited: props.onUserSelect.visited
       });
 
 
@@ -22,22 +22,38 @@ const Form = ()=>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`
-        name : ${userInput.name}
-        date: ${userInput.date}
-        visited : ${userInput.visited}
-        `)
+        // alert(`
+        // name : ${userInput.name}
+        // date: ${userInput.date}
+        // visited : ${userInput.visited}
+        // `)
         sendData(userInput);
+      
       };
 
        const sendData = async (userInput)=>{
-          const res = await db.collection('TravelDestination').doc('Place2').set(userInput);  
+          const res = await db.collection('TravelDestination').doc(userInput.name).set(userInput,{ merge: true });  
           
      }
+
+     const dataToForm = () => {
+      setUserInput({
+        name: props.onUserSelect.name,
+        date: props.onUserSelect.date,
+        visited: props.onUserSelect.visited
+      })
+    }
+  
+    useEffect(()=>{
+      dataToForm()
+      //console.log(pizzaState)
+    },[props])
+  
 
 
     return(
         <div className="App">
+          <h3>Add Board from here</h3>
         <form
              onSubmit={handleSubmit}
         >
@@ -56,7 +72,7 @@ const Form = ()=>{
             />
             <input
             type="checkbox"
-            onChange={handleInputChange}
+            //onChange={handleInputChange}
             value={userInput.visited}
             onChecked={(e) => handleInputChange(e, "visited")}
             />
