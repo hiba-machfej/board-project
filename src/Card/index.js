@@ -9,11 +9,11 @@ const CardItem = (props) => {
   // const deleteData = async (e)=>{
   //     const res = await db.collection('Board').doc(props.id).delete();
   // }
-//console.log(props.board.id)
+//console.log(props.board.card.name)
   return (
     <div>
       <Card className="add-card" type="button">
-        <Card.Body className="text-center">
+        {/* <Card.Body className="text-center">
           <svg
             align="center"
             width="1.5em"
@@ -28,8 +28,8 @@ const CardItem = (props) => {
               d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
             />
           </svg>
-        </Card.Body>
-        {/* <CardForm board={props.board} /> */}
+        </Card.Body> */}
+        <CardForm board={props.board} />
       </Card>
 
       <Card className="inner-card">
