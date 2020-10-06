@@ -6,29 +6,30 @@ import { Form, Button, Col } from "react-bootstrap";
 const ItemForm = (props) => {
   //state for the board
   const [item, setItem] = useState({
-    name: "",
+    something: "",
     date: ""
   });
 
-  console.log(props.board.id)
+  //console.log(props.board.id)
   //this is for adding new board to the coollection
   const addItem = async () => {
-    await db.collection("Board").doc(props.board.id).update({
-        name: item.name,
-        date: item.date
-    });
+    await db.collection("Board").doc(props.board.id).set({
+      item
+    },{merge:true});
   };
   
   //this handles the input value
   const handleInputValue = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
+  
   //this is for the submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(item)
     addItem();
     setItem({
-        name: "",
+      something: "",
         date: ""
     });
   };
@@ -50,8 +51,8 @@ const ItemForm = (props) => {
         <Form.Control
           type="text"
           placeholder="Enter name"
-          name="name"
-          value={item.name}
+          name="something"
+          value={item.something}
           onChange={(e) => handleInputValue(e)}
         />
           <Form.Control

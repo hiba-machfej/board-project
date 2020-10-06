@@ -32,7 +32,7 @@ const Item = (props) => {
        
       </Card>
       <Card className="inner-card">
-  <Card.Header as="h6">Name: {props.board.item.name}</Card.Header>
+  <Card.Header as="h6">Name: {props.board.item.something}</Card.Header>
         <Card.Body>
   <Card.Text>Date: {props.board.item.date}</Card.Text>
         </Card.Body>
