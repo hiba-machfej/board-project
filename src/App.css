@@ -7,6 +7,50 @@
   pointer-events: none;
 }
 
+/* this is for making the side navbar 100% */
+.ant-layout-sider-children {
+  height:100vh !important;
+}
+
+.inner-card, .add-card {
+  margin:1.5rem;
+}
+.add-card .card-body{
+ padding:.5rem;
+}
+
+.outer-board {
+  margin: 1rem 1rem 0 1.5rem ;
+}
+
+.outer-board-header {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.board-form {
+  display:flex !important;
+  flex-direction: column;
+  justify-content: center;
+  margin:0 1rem 0 .3rem ;
+}
+
+.board-form form {
+  display:flex !important;
+  flex-direction: column;
+
+}
+.board-form .btn {
+  margin-top:.5rem;
+  align-self: flex-end !important;
+}
+
+.board-entry {
+  display:flex !important;
+  justify-content: space-between;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

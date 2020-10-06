@@ -1,28 +1,40 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
-import Board from "../Board/index.js"
+import Board from "../Board/index.js";
 ///this will render the data from the firebase to the website
 
 /// onSnapShot to rener the data
 const Boards = (props) => {
-    const[boardData, setBoardData] = useState([]);
+  const [boardData, setBoardData] = useState([]);
 
-
-    const fetchData = async ()=>{
-        const boardRes = await db.collection('TravelDestination').get()
-        const boardData = boardRes.docs.map(user => user.data())
-    setBoardData(boardData)
-    console.log(boardData)
-    }
-
-    useEffect(()=>{
-        fetchData()
-    },[])
-
-    return (
-        boardData.map(data => <Board {...data} onUserSelect = {props.onUserSelect}/>)
-    )
-
-}
+  React.useEffect(() => {
+    db.collection("Board").onSnapshot((snapshot) => {
+      const travelData = [];
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          setBoardData((prevBoards) => [
+            ...prevBoards,
+            { ...change.doc.data(), id: change.doc.id },
+          ]);
+        }
+        if (change.type === "modified") {
+            setBoardData((prevBoards) => [
+                ...prevBoards,
+                { ...change.doc.data(), id: change.doc.id },
+              ]);
+        }
+        if (change.type === "removed") {
+          setBoardData((prevBoards) => [
+            ...prevBoards,
+            { ...change.doc.data(), id: change.doc.id },
+          ]);
+        }
+      });
+    });
+  }, []);
+  return boardData.map((data) => (
+    <Board {...data} onUserSelect={props.onUserSelect} />
+  ));
+};
 
 export default Boards;
