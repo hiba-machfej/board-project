@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
 import { Card, Button } from "react-bootstrap";
 import "../index.css";
-import ItemForm from "../ItemForm/index.js"
+
 
 /// single card
 const Item = (props) => {
@@ -29,9 +29,8 @@ const Item = (props) => {
             />
           </svg>
         </Card.Body> */}
-        <ItemForm board={props.board} />
+       
       </Card>
-
       <Card className="inner-card">
   <Card.Header as="h6">Name: {props.board.item.name}</Card.Header>
         <Card.Body>

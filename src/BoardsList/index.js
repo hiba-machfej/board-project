@@ -18,16 +18,10 @@ const Boards = (props) => {
           ]);
         }
         if (change.type === "modified") {
-            setBoardData((prevBoards) => [
-                ...prevBoards,
-                { ...change.doc.data(), id: change.doc.id },
-              ]);
+         
         }
         if (change.type === "removed") {
-          setBoardData((prevBoards) => [
-            ...prevBoards,
-            { ...change.doc.data(), id: change.doc.id },
-          ]);
+          
         }
       });
     });

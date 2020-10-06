@@ -10,13 +10,15 @@ const ItemForm = (props) => {
     date: ""
   });
 
+  console.log(props.board.id)
   //this is for adding new board to the coollection
   const addItem = async () => {
-    await db.collection("Board").doc().add({
-        name: "",
-        date: ""
+    await db.collection("Board").doc(props.board.id).update({
+        name: item.name,
+        date: item.date
     });
   };
+  
   //this handles the input value
   const handleInputValue = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
@@ -48,14 +50,14 @@ const ItemForm = (props) => {
         <Form.Control
           type="text"
           placeholder="Enter name"
-          name="title"
+          name="name"
           value={item.name}
           onChange={(e) => handleInputValue(e)}
         />
           <Form.Control
           type="text"
           placeholder="Enter date"
-          name="title"
+          name="date"
           value={item.date}
           onChange={(e) => handleInputValue(e)}
         />

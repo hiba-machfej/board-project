@@ -13,7 +13,7 @@ const BoardForm = (props) => {
   const addBoard = async () => {
     await db.collection("Board").add({
       title: Board.title,
-      card: {},
+      item: {},
     });
   };
   //this handles the input value
