@@ -73,3 +73,10 @@ const Board = (props) => {
 };
 
 export default Board;
+
+
+////const [isEditing, setIsEditing] = React.useState(false);
+// when the edit button is clicked:
+// setIsEditing(true)
+// {!isEditing && <div>Board Title</div>}
+// {isEditing && <EditTitleForm/>}
