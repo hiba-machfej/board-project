@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
 import { Card, Button } from "react-bootstrap";
 import "../index.css";
-import CardForm from "../CardForm/index.js"
+import ItemForm from "../ItemForm/index.js"
 
 /// single card
-const CardItem = (props) => {
+const Item = (props) => {
   // const deleteData = async (e)=>{
   //     const res = await db.collection('Board').doc(props.id).delete();
   // }
@@ -29,17 +29,17 @@ const CardItem = (props) => {
             />
           </svg>
         </Card.Body> */}
-        <CardForm board={props.board} />
+        <ItemForm board={props.board} />
       </Card>
 
       <Card className="inner-card">
-  <Card.Header as="h6">Name: {props.board.card.name}</Card.Header>
+  <Card.Header as="h6">Name: {props.board.item.name}</Card.Header>
         <Card.Body>
-  <Card.Text>Date: {props.board.card.date}</Card.Text>
+  <Card.Text>Date: {props.board.item.date}</Card.Text>
         </Card.Body>
       </Card>
     </div>
   );
 };
 
-export default CardItem;
+export default Item;

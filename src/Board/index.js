@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
-import CardItem from "../Card/index.js";
+import Item from "../Item/index.js";
 import { Card, Col, Button } from "react-bootstrap";
 import "../index.css";
 
@@ -61,7 +61,7 @@ const Board = (props) => {
             </svg>
           </div>
         </Card.Header>
-        <CardItem board={props} />
+        <Item board={props} />
       </Card>
 
       {/* <Button type="button" onClick={(e) => deleteData(e)}></Button> */}

@@ -3,15 +3,15 @@ import db from "../firebaseConfig.js";
 import { Form, Button, Col } from "react-bootstrap";
 
 
-const CardForm = (props) => {
+const ItemForm = (props) => {
   //state for the board
-  const [Card, setCard] = useState({
+  const [item, setItem] = useState({
     name: "",
     date: ""
   });
 
   //this is for adding new board to the coollection
-  const addCard = async () => {
+  const addItem = async () => {
     await db.collection("Board").doc().add({
         name: "",
         date: ""
@@ -19,13 +19,13 @@ const CardForm = (props) => {
   };
   //this handles the input value
   const handleInputValue = (e) => {
-    setCard({ ...Card, [e.target.name]: e.target.value });
+    setItem({ ...item, [e.target.name]: e.target.value });
   };
   //this is for the submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    addCard();
-    setCard({
+    addItem();
+    setItem({
         name: "",
         date: ""
     });
@@ -47,16 +47,16 @@ const CardForm = (props) => {
       <Form controlId="addBoard">
         <Form.Control
           type="text"
-          placeholder="Enter board name"
+          placeholder="Enter name"
           name="title"
-          value={Card.name}
+          value={item.name}
           onChange={(e) => handleInputValue(e)}
         />
           <Form.Control
           type="text"
-          placeholder="Enter board date"
+          placeholder="Enter date"
           name="title"
-          value={Card.date}
+          value={item.date}
           onChange={(e) => handleInputValue(e)}
         />
 
@@ -73,4 +73,4 @@ const CardForm = (props) => {
   );
 };
 
-export default CardForm;
+export default ItemForm;
