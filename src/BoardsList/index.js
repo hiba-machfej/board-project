@@ -33,8 +33,11 @@ const Boards = (props) => {
       });
     });
   }, []);
+  
+  
   return boardData.map((data) => (
-    <Board {...data} onUserSelect={props.onUserSelect} />
+   // console.log(data.items)
+     <Board {...data} onUserSelect={props.onUserSelect} />
   ));
 };
 

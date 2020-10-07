@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
-import Item from "../Item/index.js";
+import ItemList from "../ItemList/index.js";
 import { Card, Col, Button } from "react-bootstrap";
 import "../index.css";
-import ItemForm from "../ItemForm/index.js"
+import ItemForm from "../ItemForm/index.js";
 
 /// This is a function that renders a single board.
 // in here we passed props which is the fetched data from firebase.
@@ -15,7 +15,7 @@ const Board = (props) => {
       title: props.title,
     });
   };
- // console.log(props)
+  //console.log(props.id)
   //this function is used to DELETE data from board to the form for edit
   const deleteData = async (e) => {
     e.preventDefault();
@@ -63,8 +63,7 @@ const Board = (props) => {
             </svg>
           </div>
         </Card.Header>
-        <ItemForm board={props} />
-        <Item board={props} />
+        <ItemList boardInfo={props}/>
       </Card>
 
       {/* <Button type="button" onClick={(e) => deleteData(e)}></Button> */}

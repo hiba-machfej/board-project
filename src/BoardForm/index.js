@@ -8,12 +8,12 @@ const BoardForm = (props) => {
   const [Board, setBoard] = useState({
     title: "",
   });
-
+ 
   //this is for adding new board to the coollection
   const addBoard = async () => {
     await db.collection("Board").add({
       title: Board.title,
-      item: {},
+      items: [],
     });
   };
   //this handles the input value
