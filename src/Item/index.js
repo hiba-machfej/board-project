@@ -12,6 +12,7 @@ const Item = ({ itemInfo, boardId }) => {
     await db.collection("Board").doc(boardId).update({
            items: firebase.firestore.FieldValue.arrayRemove(itemInfo)
          })
+         window.location.reload(true);
   };
 
 
