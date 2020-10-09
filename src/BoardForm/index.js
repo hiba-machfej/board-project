@@ -5,7 +5,7 @@ import image1 from "./image1.png"
 
 const BoardForm = ({props}) => {
   //state for the board
-  console.log(props)
+  //console.log(props)
   const [Board, setBoard] = useState({
     title: "",
   });

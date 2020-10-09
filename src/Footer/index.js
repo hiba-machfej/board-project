@@ -7,7 +7,7 @@ import React from 'react';
 
 const FootNav = () => {
 return (
-<h1> Hello</h1>
+<p>  © Developed by Khaldoon, Knar, Hiba</p>
 )
    
 }

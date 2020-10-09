@@ -6,7 +6,16 @@
   height: 40vmin;
   pointer-events: none;
 }
+.sideNav {
+  background-color: white !important;
+}
 
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  
+}
 /* this is for making the side navbar 100% */
 .ant-layout-sider-children {
   height:100vh !important;

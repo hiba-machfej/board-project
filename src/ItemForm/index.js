@@ -9,7 +9,9 @@ const ItemForm = ({boardItems, boardId}) => {
   const [items, setItems] = useState(boardItems);
   const [userInput, setUserInput] = useState({
     itemTitle:"", 
-    date:""
+    date:"",
+    isDone:false,
+    people:""
   });
 
   const addItem = async () => {
@@ -35,12 +37,19 @@ const ItemForm = ({boardItems, boardId}) => {
     setUserInput({ ...userInput,  date: e.target.value });
   };
 
+  const handlePeopleValue = (e) => {
+    console.log(userInput);
+    setUserInput({ ...userInput,  people: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem();
     setUserInput({
       itemTitle:"", 
-      date:""
+      date:"",
+      isDone:false,
+    people:""
     });
   };
 
@@ -49,17 +58,25 @@ const ItemForm = ({boardItems, boardId}) => {
     <Form controlId="addBoard">
     <Form.Control
       type="text"
-      placeholder="Enter name"
+      placeholder="Enter a Title"
       name="itemTitle"
       value={items.itemTitle}
       onChange={(e) => handleTitleValue(e)}
     />
       <Form.Control
       type="text"
-      placeholder="Enter date"
+      placeholder="Enter a date"
       name="date"
       value={items.date}
      onChange={(e) => handleDateValue(e)}
+    />
+
+<Form.Control
+      type="text"
+      placeholder="Enter a name"
+      name="people"
+      value={items.people}
+     onChange={(e) => handlePeopleValue(e)}
     />
 
     <Button

@@ -1,0 +1,26 @@
+.nav-style{
+    display: flex ;
+    flex-direction: column !important;
+    position: relative;
+    margin:auto;
+    top:45vh;
+    font-size:1.5rem;
+    
+
+}
+
+a {
+    color: #e6525e!important;
+  }
+
+.nav-item {
+    padding:.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+
+.nav-item svg {
+margin-right:.5rem;
+}
