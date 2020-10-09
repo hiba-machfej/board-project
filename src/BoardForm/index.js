@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import db from "../firebaseConfig.js";
 import { Form, Button, Col } from "react-bootstrap";
 import image1 from "./image1.png"
 
-const BoardForm = (props) => {
+const BoardForm = ({props}) => {
   //state for the board
+  console.log(props)
   const [Board, setBoard] = useState({
     title: "",
   });
@@ -29,18 +30,19 @@ const BoardForm = (props) => {
     });
   };
   //this is for editing the data, it comes from the board HOWEVER IT IS NOT WORKING
-  const dataToForm = () => {
-    setBoard({
-      title: props.onUserSelect.title,
-    });
-  };
+  // const dataToForm = () => {
+  //   setBoard({
+  //     title: props.onUserSelect.title,
+  //   });
+  // };
 
-  useEffect(() => {
-    dataToForm();
-    //console.log(pizzaState)
-  }, [props]);
+  // useEffect(() => {
+  //   dataToForm();
+  //   //console.log(pizzaState)
+  // }, [props]);
 
   return (
+    // <p>hello</p>
     <Col className="board-entry">
     <div className="board-form">
     <h2>Let's plan your next ADVENTURE</h2>
