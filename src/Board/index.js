@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import db from "../firebaseConfig.js";
 import ItemList from "../ItemList/index.js";
-import { Card, Col, Button } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import "../index.css";
-import ItemForm from "../ItemForm/index.js";
+
 
 /// This is a function that renders a single board.
 // in here we passed props which is the fetched data from firebase.

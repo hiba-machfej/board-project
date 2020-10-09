@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import db from "../firebaseConfig.js";
-import { Card, Button } from "react-bootstrap";
+import { Card} from "react-bootstrap";
 import "../index.css";
 import firebase from '@firebase/app';
 
