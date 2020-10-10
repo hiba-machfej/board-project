@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import db from "../firebaseConfig.js";
 import ItemList from "../ItemList/index.js";
-import { Card, Col } from "react-bootstrap";
+import { Form, Button, Col, Card } from "react-bootstrap";
 import "../index.css";
 
 
@@ -15,6 +15,36 @@ const Board = (props) => {
       title: props.title,
     });
   };
+  const [clicked,setClicked]=useState(false)
+
+  const [titleChange, setTitleChange] = useState(props.title)
+
+
+
+  const handleEdite = () =>{
+    setClicked(!clicked);
+    if (clicked === false){
+      return titleChange
+        }else{
+          setTitleChange(
+            <Form>
+              <Form.Control
+                type="text"
+                // placeholder="Enter board name"
+                name="title"
+                value={titleChange}
+                onChange={(e) => handleTitleChange(e)}
+              />
+            </Form>
+          )
+        }
+  }
+//   
+
+    const handleTitleChange = (e) =>{
+      setTitleChange (e.target.value)
+    }
+
   //console.log(props.id)
   //this function is used to DELETE data from board to the form for edit
   const deleteData = async (e) => {
@@ -28,7 +58,7 @@ const Board = (props) => {
     <Col lg={4}>
       <Card className="outer-board">
         <Card.Header as="h5" className="outer-board-header">
-          {props.title}
+           {titleChange}
           <div>
             <svg
               type="button"
@@ -48,7 +78,7 @@ const Board = (props) => {
 
             <svg
               type="button"
-              onClick={(e) => passData(e)}
+              onClick={(e) => handleEdite(e)}
               width=".8em"
               height=".8em"
               viewBox="0 0 16 16"
