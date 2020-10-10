@@ -23,9 +23,7 @@ const Board = (props) => {
 
   const handleEdite = () =>{
     setClicked(!clicked);
-    if (clicked === false){
-      return titleChange
-        }else{
+    if (clicked === true){
           setTitleChange(
             <Form>
               <Form.Control
@@ -35,15 +33,25 @@ const Board = (props) => {
                 value={titleChange}
                 onChange={(e) => handleTitleChange(e)}
               />
+              <Button 
+                tvariant="outline-info"
+                type="submit"
+                size="sm"
+                onClick={(e) => handleSubmit(e)}>
+                submit</Button>
             </Form>
           )
         }
-  }
-//   
+  } 
 
     const handleTitleChange = (e) =>{
       setTitleChange (e.target.value)
     }
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      setClicked(false)
+    };
 
   //console.log(props.id)
   //this function is used to DELETE data from board to the form for edit
@@ -95,17 +103,8 @@ const Board = (props) => {
         </Card.Header>
         <ItemList boardInfo={props}/>
       </Card>
-
-      {/* <Button type="button" onClick={(e) => deleteData(e)}></Button> */}
     </Col>
   );
 };
 
 export default Board;
-
-
-////const [isEditing, setIsEditing] = React.useState(false);
-// when the edit button is clicked:
-// setIsEditing(true)
-// {!isEditing && <div>Board Title</div>}
-// {isEditing && <EditTitleForm/>}

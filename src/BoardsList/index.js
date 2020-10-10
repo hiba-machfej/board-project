@@ -21,17 +21,33 @@ const Boards = (props) => {
         }
         if (change.type === "modified") {
           console.log(change.doc.data());
+          setBoardData((prevBoards) => {
+            const newArrayBoards = [...prevBoards];
+            let index = newArrayBoards.findIndex((element) => element.id ===change.doc.id);
+            if (index!== -1) {
+              newArrayBoards[index] = {...change.doc.data(),id: change.doc.id,};
+            }
+            return newArrayBoards;
+          })
+        }
           // for modify:
           // 1. find the index of the board that you want to replace
           // 2. setBoardData((prevBoardData) =>
           // prevBoardData.slice()[index] = change.doc.data())
           // .slice() --> duplicates the array (just to be safe)
           // change.doc.data() is the new board that was modified
-        }
+        // }
+
         if (change.type === "removed") {
           console.log(change.doc.data());
+          setBoardData((boardData)=>{
+            const currBoards = [...boardData];
+          //  let index = boardData.findIndex((board)=>board.id ===change.doc.id);
+            return currBoards.filter((board)=> {if(board.id != change.doc.id){return board}})
+          });
           ///fliter the previous board (follow line 15)
         }
+        
       });
     });
   }, []);
