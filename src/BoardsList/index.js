@@ -45,7 +45,6 @@ const Boards = (props) => {
           //  let index = boardData.findIndex((board)=>board.id ===change.doc.id);
             return currBoards.filter((board)=> {if(board.id != change.doc.id){return board}})
           });
-          ///fliter the previous board (follow line 15)
         }
         
       });

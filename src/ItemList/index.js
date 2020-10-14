@@ -40,9 +40,12 @@ const ItemList = ({boardInfo}) => {
       </Button>
       </Modal>
      
-    {boardInfo.items.map((item) => {
+    {boardInfo.items.map((item, index) => {
        // console.log(item)
-      return <Item itemInfo={item} boardId={boardInfo.id} />;
+       const itemIndex = index
+      return (
+      <Item itemInfo={item} boardId={boardInfo.id} itemIndex={itemIndex} />
+      );
     })}
 
 
