@@ -3,14 +3,14 @@ import db from "../firebaseConfig.js";
 import { Form, Button } from "react-bootstrap";
 
 
-const ItemForm = ({boardItems, boardId}) => {
+const ItemForm = ({boardItems, boardId, setShow}) => {
 
 
   const [items, setItems] = useState(boardItems);
   const [userInput, setUserInput] = useState({
     itemTitle:"", 
     date:"",
-    isDone:false,
+    isDone:true,
     people:""
   });
 
@@ -28,28 +28,32 @@ const ItemForm = ({boardItems, boardId}) => {
   
 
   const handleTitleValue = (e) => {
-    console.log(userInput);
     setUserInput({ ...userInput, itemTitle: e.target.value });
   };
 
   const handleDateValue = (e) => {
-    console.log(userInput);
     setUserInput({ ...userInput,  date: e.target.value });
   };
 
   const handlePeopleValue = (e) => {
-    console.log(userInput);
     setUserInput({ ...userInput,  people: e.target.value });
   };
 
+  	
+  const handleDoneValue = (e) => {
+    setUserInput({ ...userInput,  isDone:'checkbox' ? e.target.checked : e.target.value });
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShow(false)
     addItem();
     setUserInput({
       itemTitle:"", 
       date:"",
       isDone:false,
-    people:""
+      people:""
     });
   };
 
@@ -79,6 +83,14 @@ const ItemForm = ({boardItems, boardId}) => {
      onChange={(e) => handlePeopleValue(e)}
     />
 
+<Form.Check type="checkbox" label="Did you experience this?"
+     name="isGoing"
+     checked={userInput.isDone}
+     onChange={(e) => handleDoneValue(e)}
+    />
+ 
+
+
     <Button
       variant="outline-info"
       type="submit"
@@ -92,78 +104,3 @@ const ItemForm = ({boardItems, boardId}) => {
 }
 
 export default ItemForm;
-
-// const ItemForm = (props) => {
-//   //state for the board
-//   const [item, setItem] = useState({
-//     something: "",
-//     date: ""
-//   });
-
-//   //console.log(props.board.id)
-//   //this is for adding new board to the coollection
-//   const addItem = async () => {
-//     await db.collection("Board").doc(props.board.id).set({
-//       item
-//     },{merge:true});
-//   };
-  
-//   //this handles the input value
-//   const handleInputValue = (e) => {
-//     setItem({ ...item, [e.target.name]: e.target.value });
-//   };
-  
-//   //this is for the submit
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(item)
-//     addItem();
-//     setItem({
-//       something: "",
-//         date: ""
-//     });
-//   };
-//   //this is for editing the data, it comes from the board HOWEVER IT IS NOT WORKING
-// //   const dataToForm = () => {
-// //     setCard({
-// //       name: props.onUserSelect.name,
-// //     });
-// //   };
-
-// //   useEffect(() => {
-// //     dataToForm();
-// //     //console.log(pizzaState)
-// //   }, [props]);
-
-//   return (
-   
-      // <Form controlId="addBoard">
-      //   <Form.Control
-      //     type="text"
-      //     placeholder="Enter name"
-      //     name="something"
-      //     value={item.something}
-      //     onChange={(e) => handleInputValue(e)}
-      //   />
-      //     <Form.Control
-      //     type="text"
-      //     placeholder="Enter date"
-      //     name="date"
-      //     value={item.date}
-      //     onChange={(e) => handleInputValue(e)}
-      //   />
-
-      //   <Button
-      //     variant="outline-info"
-      //     type="submit"
-      //     size="sm"
-      //     onClick={(e) => handleSubmit(e)}
-      //   >
-      //     Add Card
-      //   </Button>
-      // </Form>
-  
-//   );
-// };
-
-// export default ItemForm;

@@ -1,107 +1,129 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebaseConfig.js";
-import {Form,Card, Button} from "react-bootstrap";
+import { Form, Card, Button } from "react-bootstrap";
 import "../index.css";
-import firebase from '@firebase/app';
+import firebase from "@firebase/app";
 
 // // /// single card
-const Item = ({ itemInfo, boardId, itemIndex}) => {
-
-  const [clicked,setClicked] = useState(false);
-  const [itemDetails,setItemDetails] = useState({
+const Item = ({ itemInfo, boardId, itemIndex }) => {
+  const [clicked, setClicked] = useState(false);
+  const [itemDetails, setItemDetails] = useState({
     itemTitle: itemInfo.itemTitle,
     people: itemInfo.people,
-    date: itemInfo.date
+    date: itemInfo.date,
+    isDone: itemInfo.isDone,
   });
 
+  //console.log(itemIndex)
 
-   //console.log(itemIndex)
-
-   const handleClick = async (e) => {
-    await db.collection("Board").doc(boardId).update({
-           items: firebase.firestore.FieldValue.arrayRemove(itemInfo)
-         })
-         ///window.location.reload(true);
+  const handleClick = async (e) => {
+    await db
+      .collection("Board")
+      .doc(boardId)
+      .update({
+        items: firebase.firestore.FieldValue.arrayRemove(itemInfo),
+      });
+    ///window.location.reload(true);
   };
 
-  const handleChange = (e, key)=> {
+  const handleChange = (e, key) => {
     const value = e.target.value;
-    setItemDetails({...itemDetails, [key]:value})
-  }
+    setItemDetails({ ...itemDetails, [key]: value });
+  };
 
-  const sendEditedItem = async ()=>{
+  const handleDoneValue = (e) => {
+    setItemDetails({ ...itemDetails, isDone:'checkbox' ? e.target.checked : e.target.value });
+  };
+  const sendEditedItem = async () => {
     // const editedData = `${itemIndex}:${{itemDetails}}`;
-    await db.collection("Board").doc(boardId).update({
-      items: firebase.firestore.FieldValue.arrayRemove(itemInfo)
-    })
-    await db.collection("Board").doc(boardId).update({
-      items: firebase.firestore.FieldValue.arrayUnion(itemDetails)
-    });
+    await db
+      .collection("Board")
+      .doc(boardId)
+      .update({
+        items: firebase.firestore.FieldValue.arrayRemove(itemInfo),
+      });
+    await db
+      .collection("Board")
+      .doc(boardId)
+      .update({
+        items: firebase.firestore.FieldValue.arrayUnion(itemDetails),
+      });
+  };
 
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendEditedItem();
+    setClicked(false);
+  };
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    sendEditedItem()
-    setClicked(false)
-    
-  }
-
-  const editingForm = () =>{
-    return(
+  const editingForm = () => {
+    return (
       <Card className="inner-card">
-         <Card.Body>
+        <Card.Body>
           <Form>
             Name:
             <Form.Control
-                  type="text"
-                  name="title"
-                  value={itemDetails.itemTitle}
-                  onChange={(e) => handleChange(e, "itemTitle")}
-                />
-            Date: 
+              type="text"
+              name="title"
+              value={itemDetails.itemTitle}
+              onChange={(e) => handleChange(e, "itemTitle")}
+            />
+            Date:
             <Form.Control
-                  type="text"
-                  name="title"
-                  value={itemDetails.date}
-                  onChange={(e) => handleChange(e, "date" )}
-                />
+              type="text"
+              name="title"
+              value={itemDetails.date}
+              onChange={(e) => handleChange(e, "date")}
+            />
             People:
             <Form.Control
-                  type="text"
-                  name="title"
-                  value={itemDetails.people}
-                  onChange={(e) => handleChange(e, "people")}
-                />
+              type="text"
+              name="title"
+              value={itemDetails.people}
+              onChange={(e) => handleChange(e, "people")}
+            />
           </Form>
+          <Form.Check
+            type="checkbox"
+            label="Did you experience this?"
+            name="isGoing"
+            checked={itemDetails.isDone}
+            onChange={(e) => handleDoneValue(e, "isDone")}
+          />
         </Card.Body>
-        <Button 
-              tvariant="outline-info"
-              type="submit"
-              size="sm"
-              onClick={(e) => handleSubmit(e)}>
-              Aproove Editings</Button>
+        <Button
+          tvariant="outline-info"
+          type="submit"
+          size="sm"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Aproove Editings
+        </Button>
       </Card>
-    )
-  }
-
-  if (clicked === false){
-  return (
-    <Card className="inner-card">
-    <Card.Header as="h6">Name: {itemInfo.itemTitle}</Card.Header>
-    <Card.Body>
-      <Card.Text>Date: {itemInfo.date}</Card.Text>
-      <Card.Text>People: {itemInfo.people}</Card.Text>
-    </Card.Body>
-    <button onClick={(e) => handleClick(e)}> Delete </button>
-    <button onClick={(e) => setClicked(true)}> Edit </button>
-  </Card>
     );
-  } if (clicked === true){
-    return editingForm()
+  };
+
+  if (clicked === false) {
+    return (
+      <Card className="inner-card">
+        <Card.Header as="h6">Name: {itemInfo.itemTitle}</Card.Header>
+        <Card.Body>
+          <Card.Text>Date: {itemInfo.date}</Card.Text>
+          <Card.Text>People: {itemInfo.people}</Card.Text>
+          {itemInfo.isDone === true ? (
+            <Card.Text>Been There, Done That</Card.Text>
+          ) : (
+            <Card.Text>An adventure is still wainting </Card.Text>
+          )}
+        </Card.Body>
+        <button onClick={(e) => handleClick(e)}> Delete </button>
+        <button onClick={(e) => setClicked(true)}> Edit </button>
+      </Card>
+    );
   }
-}
-
-
+  if (clicked === true) {
+    return editingForm();
+  }
+};
 
 export default Item;

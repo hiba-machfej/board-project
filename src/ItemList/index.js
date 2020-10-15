@@ -34,7 +34,7 @@ const ItemList = ({boardInfo}) => {
       </Card>
 
       <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Body> <ItemForm boardItems={boardInfo.items} boardId={boardInfo.id}/>  </Modal.Body>
+      <Modal.Body> <ItemForm boardItems={boardInfo.items} boardId={boardInfo.id} setShow={setShow} /> </Modal.Body>
       <Button variant="secondary" onClick={handleClose}>
             Close
       </Button>
