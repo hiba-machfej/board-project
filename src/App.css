@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+
 .App {
   text-align: center;
 }
@@ -28,9 +31,36 @@
  padding:.5rem;
 }
 
+.add-card:hover {
+  background-color: #e6525e;
+  color:white;
+}
+
+.inner-card span {
+  color: #e6525e;
+  font-size:1.2rem;
+  font-family: 'Permanent Marker', cursive;
+}
+
+span {
+  color: #e6525e;
+  font-family: 'Permanent Marker', cursive;
+}
+
 .outer-board {
   margin: 1rem 1rem 0 1.5rem ;
 }
+
+/* .outer-board:empty {
+  display: none; 
+} */
+
+.outer-board:nth-child(2):empty {
+ display: none;
+  /* color:red; */
+  }
+
+
 
 .outer-board-header {
   display: flex !important;
@@ -59,6 +89,72 @@
   justify-content: space-between;
 }
 
+.item-form {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.item-form .form-control {
+ margin:.5rem 0;
+}
+.add-card-btn {
+  align-self: flex-end !important;
+  width:10rem !important;
+}
+
+.modal-button {
+  align-self: flex-end !important;
+  font-size:.875rem;
+  padding:.25rem .5rem;
+  margin: 0 1rem 1rem;
+  width:10rem !important;
+}
+
+.memory {
+  background-color: #e6525e!important;
+  color:white;
+}
+
+.memory-button {
+  background-color:  #e6525e; 
+  border: none;
+  color: white;
+  margin:1rem;
+  padding: .5rem;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.memory-button:hover {
+  background-color:  #dadada; 
+  color:black;
+}
+
+.btn {
+  background-color:  #e6525e; 
+  color:white;
+  border:none;
+}
+
+.btn:hover {
+  background-color:  #d11c2b; 
+}
+
+.form-check-input {
+  background-color:  #d11c2b; 
+}
+
+.footer {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin:0;
+  padding: 0;
+  font-size: .7rem;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

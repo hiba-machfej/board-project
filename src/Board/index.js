@@ -10,11 +10,6 @@ import "../index.css";
 
 const Board = (props) => {
   //this function is used to PASS data from board to the form for EDIT >>> However edit is not working yet.
-  // const passData = (e) => {
-  //   props.onUserSelect({
-  //     title: props.title,
-  //   });
-  // };
   const [clicked,setClicked]=useState(false)
 
   const [titleChange, setTitleChange] = useState(props.title)

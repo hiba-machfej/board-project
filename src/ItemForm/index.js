@@ -59,7 +59,7 @@ const ItemForm = ({boardItems, boardId, setShow}) => {
 
   return (
      
-    <Form controlId="addBoard">
+    <Form controlId="addBoard" className="item-form">
     <Form.Control
       type="text"
       placeholder="Enter a Title"
@@ -89,9 +89,8 @@ const ItemForm = ({boardItems, boardId, setShow}) => {
      onChange={(e) => handleDoneValue(e)}
     />
  
-
-
     <Button
+      className="add-card-btn"
       variant="outline-info"
       type="submit"
       size="sm"

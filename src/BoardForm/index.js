@@ -29,23 +29,12 @@ const BoardForm = ({props}) => {
       title: "",
     });
   };
-  //this is for editing the data, it comes from the board HOWEVER IT IS NOT WORKING
-  // const dataToForm = () => {
-  //   setBoard({
-  //     title: props.onUserSelect.title,
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   dataToForm();
-  //   //console.log(pizzaState)
-  // }, [props]);
 
   return (
     // <p>hello</p>
     <Col className="board-entry">
     <div className="board-form">
-    <h2>Let's plan your next ADVENTURE</h2>
+    <h2>Let's plan your next <span>ADVENTURE</span></h2>
       <Form controlId="addBoard">
         <Form.Control
           type="text"

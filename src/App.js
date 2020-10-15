@@ -9,6 +9,8 @@ import "./index.css";
 import { Layout } from "antd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import aboutPage from "./SideNav/aboutPage.js";
+import MemoriesList from "./MemoriesList/index.js"
+import CalenderPage from "./SideNav/Calender.js";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -26,7 +28,8 @@ function App() {
           <Content>
             <Route path="/about" component={aboutPage}></Route>
             <Route exact path="/" component={Boards}></Route>
-            {/* <Boards /> */}
+            <Route path="/memory" component={MemoriesList}></Route>
+            <Route path="/calender" component={CalenderPage}></Route>
           </Content>
 
           <Footer className={"footer"}>

@@ -58,7 +58,7 @@ const Boards = (props) => {
       </Row>
 
       <Row>
-        {boardData.map((data) => (<Board {...data} onUserSelect={props.onUserSelect} />))}
+        {boardData.map((data) => (<Board {...data} />))}
       </Row>
     </Container>
   );
