@@ -42,9 +42,20 @@
   font-family: 'Permanent Marker', cursive;
 }
 
+.adventure span, .listTitle  {
+  color: #e6525e;
+  font-family: 'Permanent Marker', cursive;
+}
+
+
 .completed {
   color: #e6525e;
   font-family: 'Permanent Marker', cursive;
+}
+
+.header-preview {
+ margin-left:13rem;
+ margin-top: 4rem;
 }
 
 .outer-board {
@@ -184,4 +195,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.listTitle {
+  margin-left: auto;
+  margin-right: auto;
 }

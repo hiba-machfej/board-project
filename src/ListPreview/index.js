@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import { Container, Row , Col} from "react-bootstrap";
 import db from "../firebaseConfig.js";
+import BoardForm from '../BoardForm'
 import ListItemsLayout from '../ListItemsLayout/index.js';
 
 
@@ -35,11 +36,12 @@ export default function ListPreview() {
 
   return (
     <Container>
-      <div st>
+      <Row className="board-form">
+        <BoardForm />
+      </Row>
     <Row className="listedBoards">
-     <h2>SO you like it Minimalist!</h2>
+     <h2 className="listTitle">SO you like it Minimalist!</h2>
     </Row>
-      </div>
     <Col>
     <List
       component="nav"

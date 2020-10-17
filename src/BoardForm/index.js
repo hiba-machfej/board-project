@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import db from "../firebaseConfig.js";
 import { Form, Button, Col } from "react-bootstrap";
-import image1 from "./image1.png"
+import image1 from "./image1.png";
+import "../App.css";
 
 const BoardForm = ({props}) => {
   //state for the board
@@ -34,7 +35,7 @@ const BoardForm = ({props}) => {
     // <p>hello</p>
     <Col className="board-entry">
     <div className="board-form">
-    <h2>Let's plan your next <span>ADVENTURE</span></h2>
+    <h2 className="adventure" >Let's plan your next <span>ADVENTURE</span></h2>
       <Form controlId="addBoard">
         <Form.Control
           type="text"

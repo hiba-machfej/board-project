@@ -30,19 +30,10 @@ const Boards = (props) => {
             return newArrayBoards;
           })
         }
-          // for modify:
-          // 1. find the index of the board that you want to replace
-          // 2. setBoardData((prevBoardData) =>
-          // prevBoardData.slice()[index] = change.doc.data())
-          // .slice() --> duplicates the array (just to be safe)
-          // change.doc.data() is the new board that was modified
-        // }
-
         if (change.type === "removed") {
           console.log(change.doc.data());
           setBoardData((boardData)=>{
             const currBoards = [...boardData];
-          //  let index = boardData.findIndex((board)=>board.id ===change.doc.id);
             return currBoards.filter((board)=> {if(board.id != change.doc.id){return board}})
           });
         }
@@ -54,7 +45,7 @@ const Boards = (props) => {
   return (
     <Container>
       <Row className="board-form">
-        <BoardForm props={boardData} />
+        <BoardForm />
       </Row>
 
       <Row>
