@@ -42,7 +42,7 @@ const MemoriesList = (props) => {
           setBoardData((boardData)=>{
             const currBoards = [...boardData];
           //  let index = boardData.findIndex((board)=>board.id ===change.doc.id);
-            return currBoards.filter((board)=> {if(board.id != change.doc.id){return board}})
+            return currBoards.filter((board)=> {if(board.id !== change.doc.id){return board}})
           });
         }
         
@@ -52,9 +52,6 @@ const MemoriesList = (props) => {
 
   return (
     <Container>
-      {/* <Row className="board-form">
-        <BoardForm props={boardData} />
-      </Row> */}
       <Row>
         {boardData.map((data) => (<Board {...data} />))}
       </Row>

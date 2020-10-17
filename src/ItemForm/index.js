@@ -68,7 +68,7 @@ const ItemForm = ({boardItems, boardId, setShow}) => {
       onChange={(e) => handleTitleValue(e)}
     />
       <Form.Control
-      type="text"
+      type="date"
       placeholder="Enter a date"
       name="date"
       value={items.date}

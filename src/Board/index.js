@@ -9,7 +9,6 @@ import "../index.css";
 // in here we passed props which is the fetched data from firebase.
 
 const Board = (props) => {
-  //this function is used to PASS data from board to the form for EDIT >>> However edit is not working yet.
   const [clicked,setClicked]=useState(false)
 
   const [titleChange, setTitleChange] = useState(props.title)
@@ -37,6 +36,50 @@ const Board = (props) => {
     await db.collection("Board").doc(props.id).delete();
   };
 
+  const sortTitle = async(e) =>{
+          
+    for (let i = 1; i < props.items.length; i++) {
+      let tmp = props.items[i];
+      let j = i;
+
+      while (j>0 &&(tmp.itemTitle.charAt(0)) < (props.items[i-1].itemTitle.charAt(0))) {
+          props.items[j]= props.items[j-1]
+          j--;
+        }
+      props.items[j] = tmp;
+    }
+
+    await db.collection("Board").doc(props.id).update(
+        {items: props.items}
+    )
+  }
+  const sortDate = async(e)=>{
+    for (let i = 1; i < props.items.length; i++) {
+      let tmp = props.items[i];
+      let j = i;
+      let currDate = makeDate(props.items[i].date)
+      let prevDate = makeDate(props.items[i-1].date);
+      console.log(currDate);
+      console.log(prevDate);
+      while (j>0 && (currDate[0]<= prevDate[0]&& currDate[1]<= prevDate[1] && currDate[2]<= prevDate[2])) {
+          console.log("here");
+          props.items[j]= props.items[j-1]
+          j--;
+        }
+      props.items[j] = tmp;
+
+    }
+
+    function makeDate(str){
+      let date = str.split('-');
+      return date;
+    }
+
+    await db.collection("Board").doc(props.id).update(
+        {items: props.items}
+    )
+
+  }
   //this return renders the column board on the screen
   if (clicked === false){
   return (
@@ -46,6 +89,16 @@ const Board = (props) => {
         <Card.Header as="h5" className="outer-board-header">
            {titleChange}
           <div>
+          <svg type="button" onClick={(e) => sortTitle(e)} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-sort-alpha-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11A.5.5 0 0 1 4 2z"/>
+            <path fill-rule="evenodd" d="M6.354 11.146a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L4 12.793l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M9.664 7l.418-1.371h1.781L12.281 7h1.121l-1.78-5.332h-1.235L8.597 7h1.067zM11 2.687l.652 2.157h-1.351l.652-2.157H11zM9.027 14h3.934v-.867h-2.645v-.055l2.567-3.719v-.691H9.098v.867h2.507v.055l-2.578 3.719V14z"/>
+          </svg>
+          <svg width="1em" onClick={(e) => sortDate(e)} height="1em" viewBox="0 0 16 16" class="bi bi-sort-numeric-down-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11A.5.5 0 0 1 4 2z"/>
+            <path fill-rule="evenodd" d="M6.354 11.146a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L4 12.793l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M9.598 5.82c.054.621.625 1.278 1.761 1.278 1.422 0 2.145-.98 2.145-2.848 0-2.05-.973-2.688-2.063-2.688-1.125 0-1.972.688-1.972 1.836 0 1.145.808 1.758 1.719 1.758.69 0 1.113-.351 1.261-.742h.059c.031 1.027-.309 1.856-1.133 1.856-.43 0-.715-.227-.773-.45H9.598zm2.757-2.43c0 .637-.43.973-.933.973-.516 0-.934-.34-.934-.98 0-.625.407-1 .926-1 .543 0 .941.375.941 1.008zM12.438 14V8.668H11.39l-1.262.906v.969l1.21-.86h.052V14h1.046z"/>
+          </svg>
             <svg
               type="button"
               onClick={(e) => deleteData(e)}
@@ -94,15 +147,16 @@ const Board = (props) => {
                 // placeholder="Enter board name"
                 name="title"
                 value={titleChange}
-                onChange={(e) => handleTitleChange(e)}
-              />
+                onChange={(e) => handleTitleChange(e)}>
+                </Form.Control>
+      
               <Button 
                 tvariant="outline-info"
                 type="submit"
                 size="sm"
-                onClick={(e) => handleSubmit(e)}>
-                submit</Button>
-            </Form>
+                onClick={(e) => handleSubmit(e)} >
+                Submit</Button>
+        </Form>
         </Card.Header>
         <ItemList boardInfo={props}/>
       </Card>

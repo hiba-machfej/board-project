@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import aboutPage from "./SideNav/aboutPage.js";
 import MemoriesList from "./MemoriesList/index.js"
 import CalenderPage from "./SideNav/Calender.js";
+import ListPreview from "./ListPreview/index.js"
 
 const { Footer, Sider, Content } = Layout;
 
@@ -30,6 +31,7 @@ function App() {
             <Route exact path="/" component={Boards}></Route>
             <Route path="/memory" component={MemoriesList}></Route>
             <Route path="/calender" component={CalenderPage}></Route>
+            <Route path="/listPreview" component={ListPreview}></Route>
           </Content>
 
           <Footer className={"footer"}>

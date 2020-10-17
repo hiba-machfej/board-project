@@ -69,7 +69,7 @@ const Item = ({ itemInfo, boardId, itemIndex }) => {
             />
             Date:
             <Form.Control
-              type="text"
+              type="date"
               name="title"
               value={itemDetails.date}
               onChange={(e) => handleChange(e, "date")}
@@ -145,7 +145,7 @@ const Item = ({ itemInfo, boardId, itemIndex }) => {
           <Card.Text><b>Date:</b> {itemInfo.date}</Card.Text>
           <Card.Text><b>People:</b> {itemInfo.people}</Card.Text>
           {itemInfo.isDone === true ? (
-            <Card.Text><span>Been There, Done That</span></Card.Text>
+            <Card.Text className="completed">Been There, Done That</Card.Text>
           ) : (
             <Card.Text>An adventure is still wainting </Card.Text>
           )}
