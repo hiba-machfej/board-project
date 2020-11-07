@@ -23,21 +23,30 @@ const Boards = (props) => {
           console.log(change.doc.data());
           setBoardData((prevBoards) => {
             const newArrayBoards = [...prevBoards];
-            let index = newArrayBoards.findIndex((element) => element.id ===change.doc.id);
-            if (index!== -1) {
-              newArrayBoards[index] = {...change.doc.data(),id: change.doc.id,};
+            let index = newArrayBoards.findIndex(
+              (element) => element.id === change.doc.id
+            );
+            if (index !== -1) {
+              newArrayBoards[index] = {
+                ...change.doc.data(),
+                id: change.doc.id,
+              };
             }
             return newArrayBoards;
-          })
+          });
         }
         if (change.type === "removed") {
           console.log(change.doc.data());
-          setBoardData((boardData)=>{
+          setBoardData((boardData) => {
             const currBoards = [...boardData];
-            return currBoards.filter((board)=> {if(board.id != change.doc.id){return board}})
+            return currBoards.filter((board) => {
+              if (board.id !== change.doc.id) {
+                return board;
+              }
+              return board;
+            });
           });
         }
-        
       });
     });
   }, []);
@@ -49,7 +58,9 @@ const Boards = (props) => {
       </Row>
 
       <Row>
-        {boardData.map((data) => (<Board {...data} />))}
+        {boardData.map((data) => (
+          <Board {...data} />
+        ))}
       </Row>
     </Container>
   );

@@ -15,7 +15,10 @@ const MemoryItem = ({ itemInfo, boardId, itemIndex }) => {
   });
 
   const handleDoneValue = (e) => {
-    setItemDetails({ ...itemDetails, isDone:'checkbox' ? e.target.checked : e.target.value });
+    setItemDetails({
+      ...itemDetails,
+      isDone: "checkbox" ? e.target.checked : e.target.value,
+    });
   };
   const sendEditedItem = async () => {
     // const editedData = `${itemIndex}:${{itemDetails}}`;
@@ -41,18 +44,17 @@ const MemoryItem = ({ itemInfo, boardId, itemIndex }) => {
 
   const editingForm = () => {
     return (
-      <Card >
+      <Card>
         <Card.Body>
           <Form>
-             <Form.Check
-            type="checkbox"
-            label="Did you experience this?"
-            name="isGoing"
-            checked={itemDetails.isDone}
-            onChange={(e) => handleDoneValue(e, "isDone")}
-          />
+            <Form.Check
+              type="checkbox"
+              label="Did you experience this?"
+              name="isGoing"
+              checked={itemDetails.isDone}
+              onChange={(e) => handleDoneValue(e, "isDone")}
+            />
           </Form>
-        
         </Card.Body>
         <Button
           tvariant="outline-info"
@@ -67,20 +69,29 @@ const MemoryItem = ({ itemInfo, boardId, itemIndex }) => {
   };
 
   if (clicked === false) {
-    return (
-        itemInfo.isDone === true ? 
+    return itemInfo.isDone === true ? (
       <Card className="inner-card">
-        <Card.Header as="h6" className="memory">{itemInfo.itemTitle}</Card.Header>
+        <Card.Header as="h6" className="memory">
+          {itemInfo.itemTitle}
+        </Card.Header>
         <Card.Body>
-          <Card.Text><b>Date:</b> {itemInfo.date}</Card.Text>
-          <Card.Text><b>People:</b> {itemInfo.people}</Card.Text>
-          
-            <Card.Text><span>Been There, Done That</span></Card.Text>
-          
+          <Card.Text>
+            <b>Date:</b> {itemInfo.date}
+          </Card.Text>
+          <Card.Text>
+            <b>People:</b> {itemInfo.people}
+          </Card.Text>
+
+          <Card.Text>
+            <span>Been There, Done That</span>
+          </Card.Text>
         </Card.Body>
-        <button className="memory-button" onClick={(e) => setClicked(true)}> Ooops is this not a memory? </button>
-      </Card> : null
-    );
+        <button className="memory-button" onClick={(e) => setClicked(true)}>
+          {" "}
+          Ooops is this not a memory?{" "}
+        </button>
+      </Card>
+    ) : null;
   }
   if (clicked === true) {
     return editingForm();

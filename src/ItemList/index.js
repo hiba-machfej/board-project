@@ -1,20 +1,23 @@
-import React , {useState} from "react";
-import { Card, Button ,Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Modal } from "react-bootstrap";
 import "../App.css";
 import Item from "../Item/index.js";
 import ItemForm from "../ItemForm/index.js";
 
-
-
 // /// single card
-const ItemList = ({boardInfo}) => {
+const ItemList = ({ boardInfo }) => {
   const [show, setShow] = useState(false);
- //console.log(boardInfo)
- const handleClose = () => setShow(false);
- const handleShow = () => setShow(true);
+  //console.log(boardInfo)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
-      <Card className="add-card" type="button" variant="primary" onClick={handleShow}>
+      <Card
+        className="add-card"
+        type="button"
+        variant="primary"
+        onClick={handleShow}
+      >
         <Card.Body className="text-center">
           <svg
             align="center"
@@ -33,24 +36,39 @@ const ItemList = ({boardInfo}) => {
         </Card.Body>
       </Card>
 
-      <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Body> <ItemForm boardItems={boardInfo.items} boardId={boardInfo.id} setShow={setShow} /> </Modal.Body>
-      <Button variant="secondary" onClick={handleClose} className="modal-button">
-            Close
-      </Button>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+          {" "}
+          <ItemForm
+            boardItems={boardInfo.items}
+            boardId={boardInfo.id}
+            setShow={setShow}
+          />{" "}
+        </Modal.Body>
+        <Button
+          variant="secondary"
+          onClick={handleClose}
+          className="modal-button"
+        >
+          Close
+        </Button>
       </Modal>
-     
-    {boardInfo.items.map((item, index) => {
-       // console.log(item)
-       const itemIndex = index
-      return (
-      <Item itemInfo={item} boardId={boardInfo.id} itemIndex={itemIndex} />
-      );
-    })}
 
-
-  </div>
-  )
-}
+      {boardInfo.items.map((item, index) => {
+        // console.log(item)
+        const itemIndex = index;
+        return (
+          <Item itemInfo={item} boardId={boardInfo.id} itemIndex={itemIndex} />
+        );
+      })}
+    </div>
+  );
+};
 
 export default ItemList;

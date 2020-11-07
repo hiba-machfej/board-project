@@ -31,7 +31,10 @@ const Item = ({ itemInfo, boardId, itemIndex }) => {
   };
 
   const handleDoneValue = (e) => {
-    setItemDetails({ ...itemDetails, isDone:'checkbox' ? e.target.checked : e.target.value });
+    setItemDetails({
+      ...itemDetails,
+      isDone: "checkbox" ? e.target.checked : e.target.value,
+    });
   };
   const sendEditedItem = async () => {
     // const editedData = `${itemIndex}:${{itemDetails}}`;
@@ -105,8 +108,9 @@ const Item = ({ itemInfo, boardId, itemIndex }) => {
   if (clicked === false) {
     return (
       <Card className="inner-card">
-        <Card.Header as="h6" className="outer-board-header">{itemInfo.itemTitle}
-        <div>
+        <Card.Header as="h6" className="outer-board-header">
+          {itemInfo.itemTitle}
+          <div>
             <svg
               type="button"
               onClick={(e) => handleClick(e)}
@@ -139,11 +143,15 @@ const Item = ({ itemInfo, boardId, itemIndex }) => {
               />
             </svg>
           </div>
-          </Card.Header>
-        
+        </Card.Header>
+
         <Card.Body>
-          <Card.Text><b>Date:</b> {itemInfo.date}</Card.Text>
-          <Card.Text><b>People:</b> {itemInfo.people}</Card.Text>
+          <Card.Text>
+            <b>Date:</b> {itemInfo.date}
+          </Card.Text>
+          <Card.Text>
+            <b>People:</b> {itemInfo.people}
+          </Card.Text>
           {itemInfo.isDone === true ? (
             <Card.Text className="completed">Been There, Done That</Card.Text>
           ) : (

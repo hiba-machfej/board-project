@@ -9,26 +9,26 @@ import "./index.css";
 import { Layout } from "antd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import aboutPage from "./SideNav/aboutPage.js";
-import MemoriesList from "./MemoriesList/index.js"
+import MemoriesList from "./MemoriesList/index.js";
 import CalenderPage from "./SideNav/Calender.js";
-import ListPreview from "./ListPreview/index.js"
+import ListPreview from "./ListPreview/index.js";
 
 const { Footer, Sider, Content } = Layout;
 
 function App() {
   return (
-    <Layout> 
+    <Layout>
       {/* Router is used to navigate between pages */}
       <Router>
-       {/* in here we have two things sider to have side nav and layout for the rest of the screen */}
+        {/* in here we have two things sider to have side nav and layout for the rest of the screen */}
         <Sider className={"sideNav"}>
           <SideNav />
         </Sider>
         {/* Layout include three things header and content and footer  */}
         <Layout>
           <Content>
-            <Route path="/about" component={aboutPage}></Route>
             <Route exact path="/" component={Boards}></Route>
+            <Route path="/about" component={aboutPage}></Route>
             <Route path="/memory" component={MemoriesList}></Route>
             <Route path="/calender" component={CalenderPage}></Route>
             <Route path="/listPreview" component={ListPreview}></Route>
@@ -38,7 +38,6 @@ function App() {
             <FootNav />
           </Footer>
         </Layout>
-
       </Router>
     </Layout>
   );
