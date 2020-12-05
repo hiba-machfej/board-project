@@ -5,9 +5,9 @@ import "./sideNav.css";
 
 const SideNav = () => {
   return (
-    <Navbar expand="lg" className="navbar ar-style">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+    <Navbar expand="lg" collapseOnSelect className="navbar">
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="nav-style">
           <NavLink to="/" className="nav-item">
             <svg

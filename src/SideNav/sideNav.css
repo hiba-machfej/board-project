@@ -7,7 +7,6 @@
   top: 0;
   bottom: 0;
   left: 0;
-  margin-right: 2rem;
   min-height: 120% !important;
   height: 120%;
   padding: 15% 1rem 20% 1rem;
@@ -67,17 +66,26 @@ a {
   .navbar-toggler {
     margin: 1rem;
   }
-}
 
-@media (max-width: 1450px) {
-  .navbar,
-  .ar-style,
-  .navbar-expand-lg,
-  .navbar-light {
-    background-color: #f0f2f5 !important;
+  .nav-style {
+    padding: 1rem;
+    font-size: 1rem;
+    position: relative;
+    background-color: #f0f2f5;
   }
 
-  .navbar-toggler {
-    margin: 1rem;
+  a {
+    color: #e6525e !important;
+  }
+
+  .nav-item {
+    padding: 0.2rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+
+  .nav-item svg {
+    margin-right: 0.5;
   }
 }
