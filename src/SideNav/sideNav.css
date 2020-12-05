@@ -1,10 +1,27 @@
 .nav-style {
+  position: fixed;
   display: flex;
   flex-direction: column !important;
-  position: relative;
-  margin: auto;
-  top: 45vh;
   font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: 2rem;
+  min-height: 120% !important;
+  height: 120%;
+  padding: 15% 1rem 20% 1rem;
+  background-color: white;
+}
+
+.navbar,
+.navbar-toggler,
+.collapsed {
+  z-index: 6;
+}
+
+.navbar {
+  padding: 0;
 }
 
 a {
@@ -33,9 +50,34 @@ a {
   align-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 7rem;
 }
 
 .about-us img {
   width: 50rem;
+}
+
+@media (max-width: 992px) {
+  .navbar,
+  .ar-style,
+  .navbar-expand-lg,
+  .navbar-light {
+    background-color: #f0f2f5 !important;
+  }
+
+  .navbar-toggler {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 1450px) {
+  .navbar,
+  .ar-style,
+  .navbar-expand-lg,
+  .navbar-light {
+    background-color: #f0f2f5 !important;
+  }
+
+  .navbar-toggler {
+    margin: 1rem;
+  }
 }

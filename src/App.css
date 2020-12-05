@@ -8,19 +8,15 @@
   height: 40vmin;
   pointer-events: none;
 }
-.sideNav {
-  background-color: white !important;
-}
 
 .footer {
   display: flex;
   justify-content: flex-end;
   position: relative;
+  background-color: transparent !important;
+  z-index: 0 !important;
 }
 /* this is for making the side navbar 100% */
-.ant-layout-sider-children {
-  height: 100vh !important;
-}
 
 .inner-card,
 .add-card {
@@ -61,13 +57,8 @@
   margin: 1rem 1rem 0 1.5rem;
 }
 
-/* .outer-board:empty {
-  display: none; 
-} */
-
 .outer-board:nth-child(2):empty {
   display: none;
-  /* color:red; */
 }
 
 .outer-board-header {
@@ -94,6 +85,7 @@
 .board-entry {
   display: flex !important;
   justify-content: space-between;
+  flex-wrap: wrap !important;
 }
 
 .item-form {
@@ -196,4 +188,25 @@
 .listTitle {
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 1450px) and (min-width: 992px) {
+  .container {
+    margin-left: 12rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us img {
+    width: 30rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-us {
+    margin: 2rem;
+  }
+  .about-us img {
+    width: 20rem !important;
+  }
 }

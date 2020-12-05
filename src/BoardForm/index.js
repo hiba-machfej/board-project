@@ -32,7 +32,6 @@ const BoardForm = ({ props }) => {
   };
 
   return (
-    // <p>hello</p>
     <Col className="board-entry">
       <div className="board-form">
         <h2 className="adventure">
@@ -56,7 +55,7 @@ const BoardForm = ({ props }) => {
           </Button>
         </Form>
       </div>
-      <img src={image1} alt="People-traveling" width="350px" />
+      <img src={image1} alt="People-traveling" width="300px" />
     </Col>
   );
 };
