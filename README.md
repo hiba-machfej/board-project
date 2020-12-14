@@ -11,7 +11,7 @@ This project is a web-based Kanban-style for travel list-making. It was develope
 * Only function components were used. 
 * React hooks was adopted.
 
-## Data Features AND Functionality 
+## Data Features and Functionality 
 * A user can create a **board/list**. A board/list
   containS many items that a user can add.
 * For each board, a user can add **board items**. 
