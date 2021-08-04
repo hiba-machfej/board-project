@@ -1,6 +1,10 @@
 # Travel Board Project
 
-This project is a web-based Kanban-style for travel list-making. It was developed during Re:coded front-end Bootcamp. The project has the concept of "boards" and "board items".
+Website Link: (https://board-project-81479.web.app)
+
+This project is a web-based Kanban-style for travel list-making. It was
+developed during Re:coded front-end Bootcamp. The project has the concept of
+"boards" and "board items".
 
 #### <br><a href="https://travelboard-khk.netlify.app/">Live Demo</a>
 
@@ -20,8 +24,8 @@ This project is a web-based Kanban-style for travel list-making. It was develope
 
 ## Data Features and Functionality
 
-- A user can create a **board/list**. A board/list
-  containS many items that a user can add.
+- A user can create a **board/list**. A board/list containS many items that a
+  user can add.
 - For each board, a user can add **board items**.
 - Board items have:
   - A due date
